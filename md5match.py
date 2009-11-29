@@ -135,6 +135,7 @@ def formatEntries( entries ):
     formatted = ''
     lineLength = -1
     i = 0
+
     for e in entries:
         
         h = e[ 'hash' ]
@@ -156,18 +157,18 @@ def formatEntries( entries ):
                 rightStr = rightList[ k ]
             
             if( isFirst ):
-                if( k < nLeft ):
-                    leftStr
                 line = '%4d | %s | %s | %s\n' % ( i, h, leftStr.ljust( longestLeft ), rightStr.ljust( longestRight ) )
                 isFirst = False
             else:
                 line = '%4d | %s | %s | %s\n' % ( i, spaces, leftStr.ljust( longestLeft ), rightStr.ljust( longestRight ) )
-        
-        if( lineLength < 0 ):
-            lineLength = len( line ) - 1
 
-        formatted += line
+            formatted += line
+
+            if( lineLength < 0 ):
+                lineLength = len( line ) - 1
+
         i += 1
+
     return( formatted, lineLength )
 
 ( formattedMatches, matchesLength ) = formatEntries( matches )
